@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body{
+            background-color: rgb(66, 65, 65);
+        }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        background-color: rgb(233, 127, 21);
+        width: 300px;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <i class="fa-brands fa-twitter"> </i>
+        <div class="tw"></div>
+        <p>Twitter followers</p>
+      </div>
+      <div class="card">
+        <i class="fa-brands fa-youtube"></i>
+        <div class="ytb"></div>
+        <p>Youtube subscibers</p>
+      </div>
+      <div class="card">
+        <i class="fa-brands fa-facebook"></i>
+        <div class="fb"></div>
+        <p>Fabebook fans</p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let follows = document.querySelector(".tw");
+        function twitterFollowRun() {
+          let number = 1;
+          function changeNum() {
+            follows.textContent = number;
+            number++;
+            if (number <= 12000) {
+              setTimeout(changeNum, 0.02);
+            }
+          }
+          changeNum();
+        }
+       twitterFollowRun();
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        let follows = document.querySelector(".ytb");
+
+        function ytbFollowRun() {
+          let number = 1;
+
+          function changeNum() {
+            follows.textContent = number;
+            number++;
+
+            if (number <= 5000) {
+              setTimeout(changeNum, 0.02);
+            }
+          }
+
+          changeNum();
+        }
+
+        ytbFollowRun();
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        let follows = document.querySelector(".fb");
+
+        function fbFollowRun() {
+          let number = 1;
+
+          function changeNum() {
+            follows.textContent = number;
+            number++;
+
+            if (number <= 7500) {
+              setTimeout(changeNum, 0.02);
+            }
+          }
+
+          changeNum();
+        }
+
+        fbFollowRun();
+      });
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/bd9aef7112.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

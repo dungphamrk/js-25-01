@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        font-family: system-ui;
+      }
+      h1 {
+        border-radius: 10%;
+        width: 500px;
+        height: 400px;
+        text-align: center;
+        background: rgb(250, 1, 1);
+        padding: 10px;
+      }
+      button {
+        background-color: rgb(250, 0, 175);
+        color: white    ;
+        margin-top: 30%;
+        height: 50px;
+        width: 200px;
+        border-radius: 50px;
+        box-shadow: none;
+      }
+      div {
+        color: black;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>
+        <p>bla bla bla</p>
+      <div class="display_joke"></div>
+      <button onclick="changeBgr();">Get another joke</button>
+    </h1>
+  </body>
+  <script> 
+    let joke = document.querySelector(".display_joke");
+    let btn=document.querySelector("button");
+    btn.addEventListener("click", randomColor);
+    randomColor();
+    
+    let jokesList = [
+      "All vampires keep their money in a special place—the blood bank.",
+      "What do you call someone who can’t stick to a diet? A desserter.",
+      "I only seem to get sick on weekdays. I must have a weekend immune system.",
+      "You can tell it's a dogwood tree from its bark.",
+      "What do you call a sheep that knows karate? A lamb chop.",
+      "What does a dad get in their stocking if they’ve been naughty? Char-coal.",
+      "Why did the scarecrow win an award? Because he was outstanding in his field",
+      "What do you call a cow with no legs? Ground beef.",
+      "What has ears but cannot hear? A cornfield!",
+      "I don’t get why Marvel doesn’t use the Hulk to advertise more. He’s basically one big Banner.",
+    ];
+    function random(a) {
+      return Math.floor(Math.random() * a);
+    }
+    function changeBgr() {
+      let random_joke = random(jokesList.length);
+      joke.innerHTML = jokesList[random_joke];
+    } 
+    function randomColor() {
+      let random_color = Math.floor(Math.random() * 11111111).toString(16);
+      document.body.style.backgroundColor = "#" + random_color;
+    }
+  </script>
+</html>

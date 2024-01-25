@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+    img {
+    object-fit: cover;
+    opacity: 100; 
+    transition: opacity 2s;
+  }
+
+  div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5em;
+    color: white;
+    opacity: 0;
+    transition: opacity 2s; 
+    color: rgb(6, 3, 15);
+  }
+</style>
+</head>
+<body>
+  <img  src="https://th.bing.com/th/id/R.b703b8086ea408ec675619ff8c0e7ee8?rik=Nb9csky7fCKy7w&pid=ImgRaw&r=0" alt="Fullscreen Image">
+  <div >100%</div>
+
+  <script>
+    window.addEventListener('load', function() {
+      let img = document.querySelector("img");
+      let loading = document.querySelector("div");
+      img.style.opacity = 0.1;
+      loading.style.opacity = 1;
+      setTimeout(function() {
+        img.style.opacity = 1;
+      }, 1500); 
+      let loadingOpacity = 1;
+      let loadingInterval = setInterval(function() {
+        if (loadingOpacity <= 0) {
+          clearInterval(loadingInterval);
+        } else {
+          loadingOpacity -= 0.01;
+          loading.style.opacity = loadingOpacity;
+          loading.innerHTML = Math.round(loadingOpacity * 100) + "%";
+        }
+      }, 20);
+
+      setTimeout(function() {
+        loading.style.opacity = 0;
+      }, 1000); 
+    });
+  </script>
+</body>
+</html>

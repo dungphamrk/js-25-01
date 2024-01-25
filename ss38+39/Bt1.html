@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bt1</title>
+        <style>
+        *{
+            box-sizing: border-box;
+        }
+    
+       body>div{
+        width: 25%;
+        position: relative;
+       } 
+       .container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+       }
+       p{   
+        text-align: center;
+        border: 3px solid blue ;
+        height: 30px;
+        width: 30px;
+        border-radius: 100%;
+       }
+       button{
+        padding: 8px;
+        background-color: rgb(59, 223, 59);
+        border: none;
+       }
+       #Previous{
+        opacity:50%;
+       }
+     
+    </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+        </div>
+        <button id="Previous">Previous</button>
+        <button id="Next">Next</button>
+        <script> 
+            let i=0;
+            let items = document.querySelectorAll("p");
+            let pre=document.getElementById("Previous");
+            let next=document.getElementById("Next");
+            let activeList=[];
+            pre.addEventListener("click",function () {
+                if (activeList==0) {
+                    return;
+                }
+                items[activeList.length-1].style.backgroundColor="white";
+                activeList.pop(1);
+                render();
+            });
+            next.addEventListener("click",function () {
+                if (activeList.length==4) { 
+                    return;
+                }
+                activeList.push(1);
+               render();
+            });
+            function render() {
+                for (let i = 0; i < activeList.length; i++) {
+                   if (activeList[i]>0) {
+                    items[i].style.backgroundColor="red";
+                   }
+                }
+                if (activeList.length==4) {
+                    next.style.opacity="50%";
+                }else next.style.opacity="100%";
+                if (activeList.length==0) {
+                   
+                    pre.style.opacity="50%";
+                }else
+                pre.style.opacity="100%";
+            }
+        </script>
+    </body>
+</html>
