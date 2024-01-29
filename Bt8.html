@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bt8</title>
+  </head>
+  <body>
+    <div>
+        <label>Pounds</label>
+        <input type="text" id="pound" />
+        <br>
+        <label>Kilograms</label>
+        <input type="text" id="kg" />
+        <br>
+        <label >Ounces</label>
+        <input type="text" id="oun" />
+        <br>
+        <label >Grams</label>
+        <input type="text" id="grams" />
+        <br>
+        <label >Stones</label>
+        <input type="text" id="stones" />
+    </div>
+    <p id="a"></p>
+
+    <script>
+      document.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("input", render);
+      });
+      function render(targetPoint) {
+        let value = parseFloat(targetPoint.target.value);
+        if (isNaN(value)) value=0;
+        let id = targetPoint.target.id;
+        let conversions = {
+          pound: {
+            kg: value / 2.20462,
+            oun: value * 16,
+            grams: value * 453.592,
+            stones: value / 14,
+          },
+          kg: {
+            pound: value * 2.20462,
+            oun: value * 35.274,
+            grams: value * 1000,
+            stones: value * 0.157473,
+          },
+          oun: {
+            pound: value / 16,
+            kg: value / 35.274,
+            grams: value * 28.3495,
+            stones: value / 224,
+          },
+          grams: {
+            pound: value / 453.592,
+            kg: value / 1000,
+            oun: value / 28.3495,
+            stones: value / 6350.29,
+          },
+          stones: {
+            pound: value * 14,
+            kg: value / 0.157473,
+            oun: value * 224,
+            grams: value * 6350.29,
+          },
+        };
+        for (let otherId in conversions[id]) {
+          document.getElementById(otherId).value =
+            conversions[id][otherId].toFixed(2);
+        }
+      }
+    </script>
+  </body>
+</html>
